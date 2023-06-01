@@ -7,7 +7,7 @@ class ProductBase(BaseModel):
     product_img: str
     product_name: str
     subcategory_id: int
-    sis: str | None = None
+    cis: str | None = None
 
     class Config:
         orm_mode = True

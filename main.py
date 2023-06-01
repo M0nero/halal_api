@@ -23,7 +23,7 @@ app.add_middleware(
 )
 
 # To get all the products
-@app.get("/products")
+@app.post("/products")
 async def get_products(search: SearchBase = None, db: Session = Depends(get_db), limit: int = 10, page: int = 1):
     skip = (page - 1) * limit
     if search:
@@ -86,6 +86,16 @@ async def update_product(product_id: int, payload: ProductBase, db: Session = De
     db.commit()
     db.refresh(product)
     return product
+
+
+# To get the product by cis
+@app.get("/product/{cis}")
+async def get_product_by_id(cis: str, db: Session = Depends(get_db)):
+    product = db.query(Product).filter(Product.cis == cis).first()
+    if product:
+        return product
+    else:
+        raise HTTPException(status_code=404, detail="Product not found")
 
 
 # To delete product with given ID

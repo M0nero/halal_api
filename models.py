@@ -11,7 +11,7 @@ class Product(Base):
     product_img = Column(String)
     product_name = Column(String(255))
     subcategory_id = Column(Integer, ForeignKey('subcategories.id'))
-    sis = Column(String(255))
+    cis = Column(String(255))
 
 
 class HalalStatus(Base):

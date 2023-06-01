@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, MetaData, Table, Column, String, Integer, 
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-SQLALCHEMY_DATABASE_URL="postgresql://postgres:postgres@localhost/halal_db"
+SQLALCHEMY_DATABASE_URL="postgresql://halal_db_user:fZ4ueRxMA0s7v4XoeCbsDcaY5kPRRShp@dpg-chsbkk8rddl7atarimu0-a/halal_db"
 
 # Create the SQLAlchemy engine
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
@@ -33,7 +33,7 @@ products = Table(
     Column('product_img', String(255)),
     Column('halal_status', Integer, ForeignKey('halal_status.id')),
     Column('subcategory_id', Integer, ForeignKey('subcategories.id')),
-    Column('sis', String(255))
+    Column('cis', String(255))
 )
 
 halal_status = Table(
